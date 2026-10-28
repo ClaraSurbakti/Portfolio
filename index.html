@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Clara Claudia Surbakti, an Early Childhood Education student with kindergarten internship experience, fashion design and sewing skills, and customer service experience.">
+  <meta name="theme-color" content="#dceef8">
+  <title>Clara Claudia Surbakti | Portfolio</title>
+  <style>
+    :root {
+      --ink: #243746;
+      --navy: #24445a;
+      --blue: #397b91;
+      --teal: #cdebe5;
+      --mint: #e7f4ef;
+      --peach: #ffcfb8;
+      --coral: #df795f;
+      --lilac: #e9e2f6;
+      --cream: #f8fbfd;
+      --paper: #ffffff;
+      --muted: #5e727e;
+      --line: #dce7ec;
+      --shadow: 0 16px 44px rgba(36, 68, 90, .10);
+      --radius: 24px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; color: var(--ink);
+      font: 16px/1.7 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #e8f4ff 0%, #e6f4f2 42%, #eff8ee 72%, #f8f5ff 100%);
+      background-attachment: fixed;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    button, input, textarea { font: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin-inline: auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(239, 248, 250, .93); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(205, 225, 231, .9);
+    }
+    .nav-wrap { min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { text-decoration: none; color: var(--navy); font-weight: 850; font-size: 1.08rem; letter-spacing: -.035em; }
+    .brand span { color: var(--coral); }
+    .nav-links { display: flex; align-items: center; gap: 22px; }
+    .nav-links a { color: #405c6a; text-decoration: none; font-size: .91rem; font-weight: 750; }
+    .nav-links a:hover { color: var(--coral); }
+    .nav-links .nav-cta { background: var(--navy); color: white; padding: 9px 16px; border-radius: 999px; }
+    .menu-toggle { display: none; border: 1px solid var(--line); border-radius: 12px; background: white; color: var(--navy); padding: 9px 12px; cursor: pointer; }
+    .hero { padding: 78px 0 82px; background: linear-gradient(120deg, rgba(216,237,255,.7), rgba(220,244,235,.62), rgba(243,237,255,.45)); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(250px, .75fr); grid-template-areas: "heading portrait" "intro portrait"; gap: 0 56px; align-items: center; }
+    .hero-heading { grid-area: heading; align-self: end; }
+    .hero-intro { grid-area: intro; align-self: start; }
+    .hero-grid .portrait-wrap { grid-area: portrait; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: .13em; font-size: .75rem; font-weight: 850; color: var(--blue); }
+    .eyebrow::before { content: ""; width: 26px; height: 3px; border-radius: 4px; background: var(--coral); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { color: var(--navy); font-size: clamp(2.65rem, 6vw, 4.8rem); line-height: 1.04; letter-spacing: -.06em; margin: 17px 0 20px; max-width: 700px; }
+    h1 .highlight { color: var(--coral); }
+    .hero-copy { color: #526b78; max-width: 640px; font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 12px 19px; border-radius: 999px; text-decoration: none; border: 1px solid transparent; font-weight: 780; cursor: pointer; transition: transform .18s, background .18s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { background: var(--navy); color: white; }
+    .button-primary:hover { background: var(--blue); }
+    .button-secondary { border-color: #bfd4dc; background: rgba(255,255,255,.75); color: var(--navy); }
+    .portrait-wrap { position: relative; max-width: 390px; width: 100%; justify-self: center; }
+    .portrait-backdrop { position: absolute; inset: 16px -15px -15px 16px; background: linear-gradient(145deg, #c6e9e5, #d9e8ff, #e9defb); border-radius: 46% 46% 30px 30px; transform: rotate(3deg); }
+    .portrait { position: relative; width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center; border-radius: 46% 46% 28px 28px; border: 8px solid white; box-shadow: var(--shadow); background: #f1e9df; }
+    .portrait-fallback { display: none; align-items: center; justify-content: center; text-align: center; padding: 24px; color: var(--navy); }
+    .photo-note { position: absolute; left: -26px; bottom: 24px; background: white; color: var(--navy); border-radius: 16px; padding: 13px 17px; box-shadow: var(--shadow); font-weight: 800; font-size: .9rem; max-width: 210px; }
+    section { padding: 78px 0; }
+    .section-head { max-width: 720px; margin-bottom: 34px; }
+    .section-head h2 { color: var(--navy); font-size: clamp(2rem, 4.3vw, 3.15rem); line-height: 1.13; letter-spacing: -.045em; margin: 12px 0; }
+    .section-head p { color: var(--muted); margin-bottom: 0; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .panel { padding: 28px; background: rgba(255,255,255,.91); border: 1px solid rgba(216,229,235,.95); border-radius: var(--radius); box-shadow: 0 5px 22px rgba(36,68,90,.035); }
+    .panel h3, .skill-card h3 { color: var(--navy); margin-bottom: 9px; font-size: 1.18rem; }
+    .panel p { color: var(--muted); margin-bottom: 0; }
+    .mini-icon { width: 50px; height: 50px; border-radius: 16px; display: grid; place-items: center; font-size: 1.45rem; margin-bottom: 17px; background: linear-gradient(135deg, #d9f1e9, #e0edff); }
+    .education-item + .education-item { border-top: 1px solid var(--line); margin-top: 23px; padding-top: 23px; }
+    .education-item .date { color: var(--coral); font-size: .82rem; font-weight: 850; }
+    .education-item h3 { margin: 3px 0 2px; }
+    .education-item .institution { font-weight: 700; color: #526773; margin-bottom: 7px; }
+    .skills-section { background: linear-gradient(135deg, rgba(218,237,255,.82), rgba(222,244,234,.88)); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .skill-card { background: rgba(255,255,255,.92); border: 1px solid rgba(216,229,235,.95); border-radius: var(--radius); padding: 25px; box-shadow: 0 8px 28px rgba(36,68,90,.04); }
+    .skill-icon { font-size: 1.65rem; margin-bottom: 14px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 13px 0 0; list-style: none; }
+    .tags li { border-radius: 10px; padding: 7px 10px; font-size: .86rem; font-weight: 650; color: #345766; background: #e3f4ef; }
+    .skill-card:nth-child(2) .tags li { background: #ffede4; }
+    .skill-card:nth-child(3) .tags li { background: #ece7fc; }
+    .experience-section { background: linear-gradient(135deg, rgba(231,244,239,.82), rgba(239,235,252,.62)); }
+    .timeline { display: grid; gap: 17px; }
+    .experience-card { display: grid; grid-template-columns: 62px 1fr; gap: 19px; padding: 25px; border: 1px solid rgba(216,229,235,.95); border-radius: var(--radius); background: rgba(255,255,255,.94); }
+    .experience-icon { width: 58px; height: 58px; display: grid; place-items: center; border-radius: 18px; font-size: 1.55rem; background: #d6f0e7; }
+    .experience-card:nth-child(2) .experience-icon { background: #ffdfce; }
+    .experience-card:nth-child(3) .experience-icon { background: #e7e0fa; }
+    .type { color: var(--coral); font-size: .77rem; font-weight: 850; text-transform: uppercase; letter-spacing: .11em; }
+    .experience-card h3 { color: var(--navy); margin: 3px 0 7px; font-size: 1.2rem; }
+    .experience-card p { color: var(--muted); margin-bottom: 0; }
+    .contact-section { background: linear-gradient(125deg, #dceeff, #def3eb 58%, #edf0ff); }
+    .contact-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 22px; align-items: start; }
+    .contact-card { border-radius: var(--radius); background: linear-gradient(145deg, #24445a, #326b80); color: white; padding: 30px; box-shadow: var(--shadow); }
+    .contact-card h3 { font-size: 1.55rem; line-height: 1.2; }
+    .contact-card > p { color: #d6e8ee; }
+    .contact-detail { border-top: 1px solid rgba(255,255,255,.2); padding: 15px 0; }
+    .contact-detail span { display: block; color: #c7e0e8; font-size: .8rem; margin-bottom: 3px; }
+    .contact-detail a { color: white; text-decoration: none; overflow-wrap: anywhere; }
+    .contact-detail a:hover { text-decoration: underline; }
+    .linkedin-link { display: inline-flex; margin-top: 12px; color: var(--navy); background: var(--peach); border-radius: 999px; padding: 10px 15px; font-weight: 800; text-decoration: none; }
+    .contact-form { display: grid; gap: 14px; }
+    label { color: var(--navy); font-weight: 750; font-size: .9rem; }
+    input, textarea { display: block; width: 100%; margin-top: 6px; padding: 13px 14px; border: 1px solid #cfdfdf; border-radius: 12px; background: white; color: var(--ink); }
+    input:focus, textarea:focus { outline: 3px solid rgba(57,123,145,.2); border-color: var(--blue); }
+    textarea { min-height: 125px; resize: vertical; }
+    .form-note { color: var(--muted); font-size: .83rem; margin: 0; }
+    .site-footer { background: #19364a; color: #d9e5e8; padding: 25px 0; font-size: .9rem; }
+    .footer-wrap { display: flex; justify-content: space-between; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .footer-wrap p { margin: 0; }
+    .footer-wrap a { color: white; text-decoration: none; font-weight: 700; }
+    :focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(220px, .75fr); gap: 0 30px; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .skill-card:last-child { grid-column: 1 / -1; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(100% - 30px, 1120px); }
+      .nav-wrap { min-height: 68px; }
+      .menu-toggle { display: inline-flex; gap: 8px; align-items: center; }
+      .nav-links { display: none; position: absolute; left: 0; right: 0; top: 68px; background: #eff8fa; padding: 12px 20px 20px; border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 12px 8px; }
+      .nav-links .nav-cta { text-align: center; margin-top: 7px; }
+      .hero { padding: 52px 0 60px; }
+      .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); grid-template-areas: "heading portrait" "intro intro"; gap: 20px 14px; align-items: center; }
+      .hero-heading { min-width: 0; }
+      .hero-heading .eyebrow { font-size: .61rem; letter-spacing: .09em; gap: 6px; }
+      .hero-heading .eyebrow::before { width: 16px; }
+      h1 { font-size: clamp(1.45rem, 6.4vw, 2.25rem); line-height: 1.08; letter-spacing: -.045em; margin: 11px 0 0; overflow-wrap: anywhere; }
+      .hero-copy { font-size: .98rem; margin-bottom: 0; }
+      .hero-intro { grid-area: intro; }
+      .hero-actions { margin-top: 19px; }
+      .hero-actions .button { padding: 11px 15px; min-height: 44px; font-size: .9rem; }
+      .portrait-wrap { width: 100%; max-width: 240px; justify-self: end; }
+      .portrait { aspect-ratio: 4 / 4.7; border-width: 5px; border-radius: 42% 42% 22px 22px; }
+      .portrait-backdrop { inset: 8px -6px -7px 8px; border-radius: 42% 42% 22px 22px; }
+      .photo-note { left: -17px; bottom: 17px; padding: 6px 8px; font-size: .58rem; line-height: 1.2; max-width: 125px; border-radius: 8px; }
+      section { padding: 60px 0; }
+      .about-grid, .skills-grid { grid-template-columns: 1fr; }
+      .skill-card:last-child { grid-column: auto; }
+      .panel, .skill-card, .contact-card { padding: 23px; }
+      .experience-card { grid-template-columns: 1fr; gap: 12px; padding: 22px; }
+      .footer-wrap { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 380px) {
+      .hero-grid { grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); gap: 16px 9px; }
+      .hero-heading .eyebrow { font-size: .56rem; }
+      h1 { font-size: clamp(1.35rem, 6.1vw, 1.65rem); }
+      .photo-note { left: -5px; bottom: 8px; padding: 5px 6px; font-size: .52rem; line-height: 1.2; max-width: 112px; border-radius: 7px; }
+      .hero-actions { gap: 8px; }
+      .hero-actions .button { padding: 10px 12px; font-size: .84rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home">Clara Claudia <span>Surbakti</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation menu">☰ <span>Menu</span></button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a class="nav-cta" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-heading">
+          <div class="eyebrow">Personal portfolio</div>
+          <h1>Growing Through Learning, Creativity, and <span class="highlight">Experience.</span></h1>
+        </div>
+        <div class="portrait-wrap">
+          <div class="portrait-backdrop" aria-hidden="true"></div>
+          <img class="portrait" src="ProfileImage.jpeg" alt="Portrait of Clara Claudia Surbakti" onerror="this.style.display='none'; document.getElementById('portraitFallback').style.display='flex';">
+          <div id="portraitFallback" class="portrait portrait-fallback"><span>Place ProfileImage.jpeg in the same folder as index.html.</span></div>
+          <div class="photo-note">Early Childhood Education student 🌱</div>
+        </div>
+        <div class="hero-intro">
+          <p class="hero-copy">Hello, I’m Clara Claudia Surbakti, an Early Childhood Education student at Universitas Negeri Medan. Through a kindergarten internship, fashion design and tailoring, and hospitality experience, I’ve been developing my creativity, patience, and practical skills.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#about">Read about me <span aria-hidden="true">↗</span></a>
+            <a class="button button-secondary" href="#contact">Get in touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">About me</div>
+          <h2>A curious learner with a creative side.</h2>
+          <p>Education is at the heart of my professional journey. My other experiences have taught me practical skills, patience, attention to detail, and how to work with people.</p>
+        </div>
+        <div class="about-grid">
+          <article class="panel">
+            <div class="mini-icon" aria-hidden="true">🎓</div>
+            <h3>Educational Background</h3>
+            <div class="education-item">
+              <div class="date">2024 – Present</div>
+              <h3>Early Childhood Education and Teaching</h3>
+              <div class="institution">Universitas Negeri Medan</div>
+              <p>Studying early childhood education, including children's development, learning, and care.</p>
+            </div>
+            <div class="education-item">
+              <div class="date">July 2019 – June 2022</div>
+              <h3>Fashion Design</h3>
+              <div class="institution">SMK Negeri 10 Medan</div>
+              <p>Studied pattern making, sewing techniques, fabric types, and garment design.</p>
+            </div>
+          </article>
+          <article class="panel">
+            <div class="mini-icon" aria-hidden="true">💛</div>
+            <h3>Brief Profile</h3>
+            <p>I am interested in children's learning and wellbeing, and in helping create a welcoming environment where children feel supported as they grow. My kindergarten internship gave me the opportunity to connect my studies with practical experience. I also bring a creative foundation from fashion design and tailoring, alongside customer-service experience as a waitress. I value patience, creativity, responsibility, and continuous learning.</p>
+            <a class="linkedin-link" href="https://www.linkedin.com/in/clara-claudia-surbakti-63253843b/" target="_blank" rel="noopener noreferrer">View my LinkedIn ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="skills-section" id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">What I bring</div>
+          <h2>Skills</h2>
+          <p>A mix of education-related learning, creative craft, and interpersonal skills developed through study and work.</p>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-icon" aria-hidden="true">🧸</div>
+            <h3>Education &amp; Practical Skills</h3>
+            <ul class="tags">
+              <li>Teaching assistance</li>
+              <li>Kindergarten internship</li>
+              <li>Early childhood learning</li>
+              <li>Classroom activity support</li>
+            </ul>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon" aria-hidden="true">🪡</div>
+            <h3>Creative &amp; Interpersonal Skills</h3>
+            <ul class="tags">
+              <li>Fashion design</li>
+              <li>Sewing</li>
+              <li>Pattern making</li>
+              <li>Communication</li>
+              <li>Teamwork</li>
+              <li>Patience</li>
+              <li>Customer service</li>
+            </ul>
+          </article>
+          <article class="skill-card">
+            <div class="skill-icon" aria-hidden="true">🎨</div>
+            <h3>Tools &amp; Software</h3>
+            <ul class="tags">
+              <li>Canva</li>
+              <li>Microsoft Excel</li>
+              <li>Artificial intelligence tools (AI)</li>
+              <li>Sewing equipment</li>
+              <li>Pattern-making tools</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="experience-section" id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">My journey so far</div>
+          <h2>Different experiences, valuable lessons.</h2>
+          <p>My main focus is early childhood education, supported by experiences that have helped me grow creatively and professionally.</p>
+        </div>
+        <div class="timeline">
+          <article class="experience-card">
+            <div class="experience-icon" aria-hidden="true">🌱</div>
+            <div>
+              <div class="type">Education &amp; practical learning</div>
+              <h3>Kindergarten Internship</h3>
+              <p>I completed a kindergarten internship at PG/TK Orion Prime School Medan, where I gained practical experience in early childhood education. During my internship, I observed classroom activities, learned from teachers, and assisted in preparing learning media to support children's learning and development.</p>
+            </div>
+          </article>
+          <article class="experience-card">
+            <div class="experience-icon" aria-hidden="true">🧵</div>
+            <div>
+              <div class="type">Creative &amp; practical experience</div>
+              <h3>Tailoring &amp; Fashion Design</h3>
+              <p>My fashion design studies and tailoring experience have helped me develop creativity, precision, and attention to detail. My vocational studies included pattern making, sewing techniques, fabric types, and garment design.</p>
+            </div>
+          </article>
+          <article class="experience-card">
+            <div class="experience-icon" aria-hidden="true">☕</div>
+            <div>
+              <div class="type">Hospitality</div>
+              <h3>Waitress</h3>
+              <p>Working as a waitress gave me experience serving customers and working as part of a team in a busy environment. This experience strengthened my communication, organisation, adaptability, and helpful attitude.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">Let's connect</div>
+          <h2>I'd love to hear from you.</h2>
+          <p>For questions, educational opportunities, or professional connections, please feel free to get in touch.</p>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Contact Clara</h3>
+            <p>You can reach me by email or connect with me on LinkedIn.</p>
+            <div class="contact-detail"><span>Email</span><a href="mailto:clarasurbakti72@gmail.com">clarasurbakti72@gmail.com</a></div>
+            <div class="contact-detail"><span>LinkedIn</span><a href="https://www.linkedin.com/in/clara-claudia-surbakti-63253843b/" target="_blank" rel="noopener noreferrer">Clara Claudia Surbakti ↗</a></div>
+          </div>
+          <div class="panel">
+            <h3>Send an email</h3>
+            <form class="contact-form" id="contactForm">
+              <label for="senderName">Your name<input id="senderName" name="senderName" autocomplete="name" required placeholder="Enter your name"></label>
+              <label for="senderEmail">Your email<input id="senderEmail" name="senderEmail" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+              <label for="message">Message<textarea id="message" name="message" required placeholder="Write your message here"></textarea></label>
+              <button class="button button-primary" type="submit">Prepare email ↗</button>
+              <p class="form-note">This opens your email application with the message prepared.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Clara Claudia Surbakti · Personal Portfolio</p>
+      <a href="#home">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.querySelector('span').textContent = open ? 'Close' : 'Menu';
+      menuToggle.firstChild.textContent = open ? '✕ ' : '☰ ';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.querySelector('span').textContent = 'Menu';
+      menuToggle.firstChild.textContent = '☰ ';
+    }));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('senderName').value.trim();
+      const email = document.getElementById('senderEmail').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Portfolio enquiry from ' + name);
+      const body = encodeURIComponent('From: ' + name + '\nReply to: ' + email + '\n\n' + message);
+      window.location.href = 'mailto:clarasurbakti72@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  </script>
+</body>
+</html>
